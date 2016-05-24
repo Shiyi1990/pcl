@@ -1,0 +1,26 @@
+Following is my source code, and I compile it in VS2012. Error occur just because I include the features headfile (#include <pcl/features/normal_3d.h>), and the error is shown after the source code. 
+I have tried my best to find any solution to this problem but couldn't figure it out. Can anyone help me ? Thank in advance.
+
+Source Code:
+#include <pcl/features/normal_3d.h>
+#include <pcl/io/ply_io.h>
+#include <pcl/point_types.h>
+#include <pcl/visualization/cloud_viewer.h>
+
+int main ()
+{
+  pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
+
+  pcl::io::loadPLYFile<pcl::PointXYZ>("one.ply",*cloud);
+  
+  return 0;
+}
+
+Error:
+1>------ Build started: Project: Transformation, Configuration: Debug Win32 ------
+1>  Source.cpp
+1>c:\program files (x86)\pcl 1.7.2\include\pcl-1.7\pcl\point_traits.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+1>c:\program files (x86)\pcl 1.7.2\3rdparty\flann\include\flann\util\serialization.h(362): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+1>          c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========
+
